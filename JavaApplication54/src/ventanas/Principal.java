@@ -1,11 +1,17 @@
 package ventanas;
 
 import entidades.clases.EntidadesProductos;
+import java.awt.Graphics;
+import java.awt.Image;
+import javax.swing.ImageIcon;
+import javax.swing.JPanel;
 
 public class Principal extends javax.swing.JFrame {
     EntidadesProductos entidadesProductos = new EntidadesProductos();
+    FondoPanel fondo = new FondoPanel();
     public Principal() {
         initComponents();
+        this.setContentPane(fondo);
         setExtendedState(Principal.MAXIMIZED_BOTH);
         
     }
@@ -24,17 +30,17 @@ public class Principal extends javax.swing.JFrame {
         jMenuItem4 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setResizable(false);
+        setPreferredSize(new java.awt.Dimension(1920, 1080));
 
         javax.swing.GroupLayout jDesktopPane2Layout = new javax.swing.GroupLayout(jDesktopPane2);
         jDesktopPane2.setLayout(jDesktopPane2Layout);
         jDesktopPane2Layout.setHorizontalGroup(
             jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
+            .addGap(0, 1000, Short.MAX_VALUE)
         );
         jDesktopPane2Layout.setVerticalGroup(
             jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 577, Short.MAX_VALUE)
+            .addGap(0, 776, Short.MAX_VALUE)
         );
 
         jMenu1.setText("Administracion");
@@ -124,5 +130,15 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     // End of variables declaration//GEN-END:variables
-
+    class FondoPanel extends JPanel{
+        private Image imagen;
+        
+        @Override
+        public void paint(Graphics g){
+            imagen = new ImageIcon(getClass().getResource("../Images/background-image.jpg")).getImage();
+            g.drawImage(imagen, 0,0,getWidth(),getHeight(), this);
+            setOpaque(false);
+            super.paint(g);
+        }
+    }
 }
