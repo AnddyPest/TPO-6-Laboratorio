@@ -105,6 +105,11 @@ public class Principal extends javax.swing.JFrame {
         jMenu1.setText("Administracion");
 
         MenuCrear.setText("Crear");
+        MenuCrear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuCrearActionPerformed(evt);
+            }
+        });
         jMenu1.add(MenuCrear);
 
         jMenuBar1.add(jMenu1);
@@ -152,6 +157,15 @@ public class Principal extends javax.swing.JFrame {
         Escritorio.moveToFront(vistaRubro);
         
     }//GEN-LAST:event_MenuConsultaPorRubroActionPerformed
+
+    private void MenuCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuCrearActionPerformed
+        Escritorio.removeAll();
+        Escritorio.repaint();
+        GestionDeProductos vistaGestionDeProductos = new GestionDeProductos();
+        vistaGestionDeProductos.setVisible(true);
+        Escritorio.add(vistaGestionDeProductos);
+        Escritorio.moveToFront(vistaGestionDeProductos);
+    }//GEN-LAST:event_MenuCrearActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
