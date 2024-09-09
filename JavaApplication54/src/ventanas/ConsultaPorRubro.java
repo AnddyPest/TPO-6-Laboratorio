@@ -4,6 +4,9 @@
  */
 package ventanas;
 
+import java.awt.Color;
+import java.awt.Graphics;
+
 /**
  *
  * @author Max
@@ -15,7 +18,6 @@ public class ConsultaPorRubro extends javax.swing.JInternalFrame {
      */
     public ConsultaPorRubro() {
         initComponents();
-        this.setSize(800, 600);
     }
 
     /**
@@ -27,109 +29,159 @@ public class ConsultaPorRubro extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        backgroundRubro = new javax.swing.JPanel();
-        PanelLogo = new javax.swing.JPanel();
-        LogoBusquedaRubro = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        PanelTabla = new javax.swing.JPanel();
+        DesktopPanePrincipalRubro = new javax.swing.JDesktopPane(){
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                g.setColor(Color.WHITE);
+                g.fillRect(0, 0, getWidth(), getHeight());
+            }
+        };
+        jLabel2 = new javax.swing.JLabel();
+        PanelTabla = new javax.swing.JPanel(){
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                g.setColor(Color.GRAY);
+                g.fillRect(0, 0, getWidth(), getHeight());
+            }
+        };
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jLabel2 = new javax.swing.JLabel();
         ComboBoxRubro = new javax.swing.JComboBox<>();
+        PanelLogo = new javax.swing.JPanel(){
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                g.setColor(Color.darkGray);
+                g.fillRect(0, 0, getWidth(), getHeight());
+            }
+        };
+        jLabel1 = new javax.swing.JLabel();
+        labelConsultaPorRubro = new javax.swing.JLabel();
 
-        setBackground(java.awt.Color.white);
-        setTitle("Busqueda por Rubro");
+        setClosable(true);
         setPreferredSize(new java.awt.Dimension(800, 600));
 
-        backgroundRubro.setBackground(java.awt.Color.white);
-        backgroundRubro.setForeground(java.awt.Color.white);
-        backgroundRubro.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jLabel2.setFont(new java.awt.Font("Dubai", 1, 24)); // NOI18N
+        jLabel2.setText("Rubro:");
 
-        PanelLogo.setBackground(new java.awt.Color(51, 255, 255));
-        PanelLogo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        PanelLogo.setForeground(java.awt.Color.black);
-        PanelLogo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        PanelTabla.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.lightGray, java.awt.Color.black, java.awt.Color.lightGray, java.awt.Color.lightGray));
+        PanelTabla.setForeground(new java.awt.Color(60, 63, 65));
 
-        LogoBusquedaRubro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/iconoLupa.png"))); // NOI18N
-        PanelLogo.add(LogoBusquedaRubro, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 2, 113, 116));
-
-        backgroundRubro.add(PanelLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 0, 140, 120));
-
-        jLabel1.setBackground(java.awt.Color.black);
-        jLabel1.setFont(new java.awt.Font("DialogInput", 1, 36)); // NOI18N
-        jLabel1.setForeground(java.awt.Color.black);
-        jLabel1.setText("Listado Por Rubro");
-        backgroundRubro.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, 410, 40));
-
-        PanelTabla.setBackground(java.awt.Color.white);
-        PanelTabla.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.lightGray));
-        PanelTabla.setForeground(java.awt.Color.gray);
-
+        jTable1.setForeground(new java.awt.Color(51, 51, 51));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Codigo", "Nombre", "Marca", "Rubro", "Precio", "Stock"
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Integer.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, true, true
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
+        jTable1.setGridColor(java.awt.Color.white);
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout PanelTablaLayout = new javax.swing.GroupLayout(PanelTabla);
         PanelTabla.setLayout(PanelTablaLayout);
         PanelTablaLayout.setHorizontalGroup(
             PanelTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 776, Short.MAX_VALUE)
+            .addGroup(PanelTablaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 774, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PanelTablaLayout.setVerticalGroup(
             PanelTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelTablaLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
-        backgroundRubro.add(PanelTabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 780, 390));
+        ComboBoxRubro.setBackground(java.awt.Color.darkGray);
+        ComboBoxRubro.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        ComboBoxRubro.setForeground(java.awt.Color.black);
+        ComboBoxRubro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un rubro\t", "Comestible\t", "Perfumeria", "Limpieza", " " }));
 
-        jLabel2.setBackground(java.awt.Color.black);
-        jLabel2.setFont(new java.awt.Font("DialogInput", 1, 24)); // NOI18N
-        jLabel2.setForeground(java.awt.Color.black);
-        jLabel2.setText("Rubro:");
-        backgroundRubro.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(174, 103, 90, 40));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/iconoLupa.png"))); // NOI18N
 
-        ComboBoxRubro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione el rubro" }));
-        ComboBoxRubro.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.black, null, null));
-        ComboBoxRubro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        backgroundRubro.add(ComboBoxRubro, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 110, 280, 30));
+        javax.swing.GroupLayout PanelLogoLayout = new javax.swing.GroupLayout(PanelLogo);
+        PanelLogo.setLayout(PanelLogoLayout);
+        PanelLogoLayout.setHorizontalGroup(
+            PanelLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelLogoLayout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12))
+        );
+        PanelLogoLayout.setVerticalGroup(
+            PanelLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
+        );
+
+        labelConsultaPorRubro.setBackground(java.awt.Color.black);
+        labelConsultaPorRubro.setFont(new java.awt.Font("DialogInput", 1, 36)); // NOI18N
+        labelConsultaPorRubro.setForeground(java.awt.Color.black);
+        labelConsultaPorRubro.setText("Consulta por Rubro");
+
+        DesktopPanePrincipalRubro.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        DesktopPanePrincipalRubro.setLayer(PanelTabla, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        DesktopPanePrincipalRubro.setLayer(ComboBoxRubro, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        DesktopPanePrincipalRubro.setLayer(PanelLogo, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        DesktopPanePrincipalRubro.setLayer(labelConsultaPorRubro, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout DesktopPanePrincipalRubroLayout = new javax.swing.GroupLayout(DesktopPanePrincipalRubro);
+        DesktopPanePrincipalRubro.setLayout(DesktopPanePrincipalRubroLayout);
+        DesktopPanePrincipalRubroLayout.setHorizontalGroup(
+            DesktopPanePrincipalRubroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(DesktopPanePrincipalRubroLayout.createSequentialGroup()
+                .addGroup(DesktopPanePrincipalRubroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(DesktopPanePrincipalRubroLayout.createSequentialGroup()
+                        .addGroup(DesktopPanePrincipalRubroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(DesktopPanePrincipalRubroLayout.createSequentialGroup()
+                                .addGap(187, 187, 187)
+                                .addComponent(jLabel2)
+                                .addGap(41, 41, 41)
+                                .addComponent(ComboBoxRubro, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(127, 127, 127))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DesktopPanePrincipalRubroLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(labelConsultaPorRubro)
+                                .addGap(95, 95, 95)))
+                        .addComponent(PanelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(PanelTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        DesktopPanePrincipalRubroLayout.setVerticalGroup(
+            DesktopPanePrincipalRubroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(DesktopPanePrincipalRubroLayout.createSequentialGroup()
+                .addGroup(DesktopPanePrincipalRubroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(PanelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(DesktopPanePrincipalRubroLayout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addComponent(labelConsultaPorRubro)))
+                .addGap(18, 18, 18)
+                .addGroup(DesktopPanePrincipalRubroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(ComboBoxRubro))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(PanelTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(backgroundRubro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(DesktopPanePrincipalRubro)
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(backgroundRubro, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(DesktopPanePrincipalRubro)
         );
 
         pack();
@@ -138,13 +190,13 @@ public class ConsultaPorRubro extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> ComboBoxRubro;
-    private javax.swing.JLabel LogoBusquedaRubro;
+    private javax.swing.JDesktopPane DesktopPanePrincipalRubro;
     private javax.swing.JPanel PanelLogo;
     private javax.swing.JPanel PanelTabla;
-    private javax.swing.JPanel backgroundRubro;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel labelConsultaPorRubro;
     // End of variables declaration//GEN-END:variables
 }

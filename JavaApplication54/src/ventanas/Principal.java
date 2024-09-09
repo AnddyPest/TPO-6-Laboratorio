@@ -8,8 +8,8 @@ import javax.swing.JPanel;
 
 public class Principal extends javax.swing.JFrame {
     EntidadesProductos entidadesProductos = new EntidadesProductos();
-
-    FondoPanel fondo = new FondoPanel();
+    
+   
 
     /*nombres para los campos:
     txtName para textfields
@@ -64,7 +64,7 @@ public class Principal extends javax.swing.JFrame {
 
     public Principal() {
         initComponents();
-        this.setContentPane(fondo);
+        
         setExtendedState(Principal.MAXIMIZED_BOTH);
         
     }
@@ -73,51 +73,57 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDesktopPane2 = new javax.swing.JDesktopPane();
+        ImageIcon icon = new ImageIcon(getClass().getResource("../Images/background-image.jpg"));
+        Image image = icon.getImage();
+        Escritorio = new javax.swing.JDesktopPane(){
+            public void paintComponent(Graphics g){
+                g.drawImage(image,0,0,getWidth(),getHeight(),this);
+            }
+        };
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        MenuCrear = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        MenuConsultaPorNombre = new javax.swing.JMenuItem();
+        MenuConsultaPorPrecio = new javax.swing.JMenuItem();
+        MenuConsultaPorRubro = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1920, 1080));
 
-        javax.swing.GroupLayout jDesktopPane2Layout = new javax.swing.GroupLayout(jDesktopPane2);
-        jDesktopPane2.setLayout(jDesktopPane2Layout);
-        jDesktopPane2Layout.setHorizontalGroup(
-            jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout EscritorioLayout = new javax.swing.GroupLayout(Escritorio);
+        Escritorio.setLayout(EscritorioLayout);
+        EscritorioLayout.setHorizontalGroup(
+            EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 1000, Short.MAX_VALUE)
         );
-        jDesktopPane2Layout.setVerticalGroup(
-            jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        EscritorioLayout.setVerticalGroup(
+            EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 776, Short.MAX_VALUE)
         );
 
         jMenu1.setText("Administracion");
 
-        jMenuItem1.setText("Crear");
-        jMenu1.add(jMenuItem1);
+        MenuCrear.setText("Crear");
+        jMenu1.add(MenuCrear);
 
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Consultas");
 
-        jMenuItem2.setText("Consulta por Nombre");
-        jMenu2.add(jMenuItem2);
+        MenuConsultaPorNombre.setText("Consulta por Nombre");
+        jMenu2.add(MenuConsultaPorNombre);
 
-        jMenuItem3.setText("Consulta por Precio");
-        jMenu2.add(jMenuItem3);
+        MenuConsultaPorPrecio.setText("Consulta por Precio");
+        jMenu2.add(MenuConsultaPorPrecio);
 
-        jMenuItem4.setText("Consulta por Rubro");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+        MenuConsultaPorRubro.setText("Consulta por Rubro");
+        MenuConsultaPorRubro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
+                MenuConsultaPorRubroActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem4);
+        jMenu2.add(MenuConsultaPorRubro);
 
         jMenuBar1.add(jMenu2);
 
@@ -127,19 +133,25 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane2)
+            .addComponent(Escritorio)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane2)
+            .addComponent(Escritorio)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
+    private void MenuConsultaPorRubroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuConsultaPorRubroActionPerformed
+        Escritorio.removeAll();
+        Escritorio.repaint();
+        ConsultaPorRubro vistaRubro = new ConsultaPorRubro();
+        vistaRubro.setVisible(true);
+        Escritorio.add(vistaRubro);
+        Escritorio.moveToFront(vistaRubro);
+        
+    }//GEN-LAST:event_MenuConsultaPorRubroActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -174,24 +186,14 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDesktopPane jDesktopPane2;
+    private javax.swing.JDesktopPane Escritorio;
+    private javax.swing.JMenuItem MenuConsultaPorNombre;
+    private javax.swing.JMenuItem MenuConsultaPorPrecio;
+    private javax.swing.JMenuItem MenuConsultaPorRubro;
+    private javax.swing.JMenuItem MenuCrear;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
     // End of variables declaration//GEN-END:variables
-    class FondoPanel extends JPanel{
-        private Image imagen;
-        
-        @Override
-        public void paint(Graphics g){
-            imagen = new ImageIcon(getClass().getResource("../Images/background-image.jpg")).getImage();
-            g.drawImage(imagen, 0,0,getWidth(),getHeight(), this);
-            setOpaque(false);
-            super.paint(g);
-        }
-    }
+    
 }
