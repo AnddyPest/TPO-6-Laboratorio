@@ -8,7 +8,60 @@ import javax.swing.JPanel;
 
 public class Principal extends javax.swing.JFrame {
     EntidadesProductos entidadesProductos = new EntidadesProductos();
+
     FondoPanel fondo = new FondoPanel();
+
+    /*nombres para los campos:
+    txtName para textfields
+    btnName para botones
+    cmbName para combos
+    scrName para scroll menues
+    tabName para tablas
+    spnName para spinners
+    todos los elementos con cammel case, ejemplo: precioProducto
+    ------------------------------------------------------------------------
+    recordar la configuracion de los txt para que solo puedan cargar numeros:
+    EN TIPO DE EVENTO "KEY TYPED": INGRESAR
+    int key = evt.getKeyChar();
+        boolean numero = key >= 48 && key <= 57;
+
+        if (!numero) {
+            evt.consume();
+        }
+    Esta linea de codigo evita que se ingresen caracteres que no sean numericos; aplicar en precio
+    (Ver el ASCII para el punto o coma decimal) y codigo de producto.
+    ------------------------------------------------------------------------
+    PARA CREAR UNA TABLA:
+    private final DefaultTableModel modelo = new DefaultTableModel();
+    ->
+    PARA CREAR LA CABECERA DE LA TABLA: Recordar cambiar el tipo de dato al correspondiente
+    desde el menu de paramentros de la tabla en vista diseño(Sera int para Code y double para Price.
+    private void cabeceraTabla() {
+        modelo.addColumn("Titulo 1");
+        modelo.addColumn("Titulo 2");
+        modelo.addColumn("Titulo 3");
+        modelo.addColumn("Titulo 4");
+        nombreDeLaTabla.setModel(modelo);
+    }
+
+    private void cargaTabla(ACA SE COLOCAN LOS OBJETOS O ELEMENTOS CON LOS QUE SE LLENA
+    EN NUESTRO CASO Productos productos) {
+
+        modelo.addRow(new Object[]{
+            productos.getCode,
+            cliente.getName(),
+            cliente.getBrand(),
+            cliente.getType(),
+            cliente.getPrice(),
+            cliente.getStock()
+        });
+
+    }
+    --------------------------------------------------------------------------
+    Comando para borrar tabla:
+    modelo.setRowCount(0);
+    */
+
     public Principal() {
         initComponents();
         this.setContentPane(fondo);
