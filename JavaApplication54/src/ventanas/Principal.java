@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 
 public class Principal extends javax.swing.JFrame {
     EntidadesProductos entidadesProductos = new EntidadesProductos();
+    Productos prod1 = new Productos(1, "Aceite", "Patito", "Comestible", 100.25, 12);
     
    
 
@@ -65,10 +66,10 @@ public class Principal extends javax.swing.JFrame {
     EntidadesProductos entidadProducto = new EntidadesProductos();
     public Principal() {
         initComponents();
-        
+        entidadProducto.addProducts(prod1);
         setExtendedState(Principal.MAXIMIZED_BOTH);
-        Productos product1 = new Productos("Fideito", "Marolio", "Comestible", 1200, 1);
-        entidadProducto.addProducts(product1);
+        //Productos product1 = new Productos("Fideito", "Marolio", "Comestible", 1200, 1);
+      //entidadProducto.addProducts(product1);
     }
 
     @SuppressWarnings("unchecked")
@@ -163,7 +164,7 @@ public class Principal extends javax.swing.JFrame {
     private void MenuCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuCrearActionPerformed
         Escritorio.removeAll();
         Escritorio.repaint();
-        GestionDeProductos vistaGestionDeProductos = new GestionDeProductos();
+        GestionDeProductos vistaGestionDeProductos = new GestionDeProductos(entidadProducto);
         vistaGestionDeProductos.setVisible(true);
         Escritorio.add(vistaGestionDeProductos);
         Escritorio.moveToFront(vistaGestionDeProductos);

@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Productos implements Comparable<Productos>{
     
-    static int variableIncrement = 0; // variable estatica para darle a cada producto creado un ID unico
+    
     int code;
     String name;
     String brand;
@@ -12,12 +12,10 @@ public class Productos implements Comparable<Productos>{
     double price;
     int stock;
     
-    public Productos(){
-        variableIncrement++;
-        this.code = variableIncrement;
-    }
+    
 
-    public Productos(String name, String brand, String type, double price, int stock) {
+    public Productos(int code, String name, String brand, String type, double price, int stock) {
+        this.code = code;
         this.name = name;
         this.brand = brand;
         this.type = type;
@@ -114,11 +112,7 @@ public class Productos implements Comparable<Productos>{
     }
 
     
-        //Este compare no me permitia añadir un objeto al tree set
-//    @Override
-//    public int compareTo(Integer o) {
-//        return o.compareTo(code);
-//    }
+ 
     @Override
     public int compareTo(Productos o) {
         return Integer.compare(code,o.getCode());
@@ -129,4 +123,6 @@ public class Productos implements Comparable<Productos>{
         return "Productos{" + "code=" + code + ", name=" + name + ", brand=" + brand + ", type=" + type + ", price=" + price + ", stock=" + stock + '}';
     }
 
+
+    
 }

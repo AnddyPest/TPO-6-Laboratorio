@@ -150,7 +150,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="TablaRubro">
+                <Component class="javax.swing.JTable" name="tablaRubro">
                   <Properties>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="33" green="33" red="33" type="rgb"/>
@@ -219,16 +219,12 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Dialog" size="14" style="0"/>
             </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" id="black" palette="1" red="0" type="palette"/>
-            </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="5">
-                <StringItem index="0" value="Seleccione un rubro"/>
+              <StringArray count="4">
+                <StringItem index="0" value="Seleccione un Rubro"/>
                 <StringItem index="1" value="Comestible"/>
-                <StringItem index="2" value="Perfumeria"/>
-                <StringItem index="3" value="Limpieza"/>
-                <StringItem index="4" value=""/>
+                <StringItem index="2" value="Limpieza"/>
+                <StringItem index="3" value="Perfumeria"/>
               </StringArray>
             </Property>
           </Properties>
@@ -276,9 +272,6 @@
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="DialogInput" size="36" style="1"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" id="black" palette="1" red="0" type="palette"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Consulta por Rubro"/>
           </Properties>
