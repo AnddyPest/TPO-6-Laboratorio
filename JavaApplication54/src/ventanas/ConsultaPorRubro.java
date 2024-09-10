@@ -13,10 +13,12 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ConsultaPorRubro extends javax.swing.JInternalFrame {
 
-    EntidadesProductos entidadProducto;
+    EntidadesProductos entidadesProductos;
     DefaultTableModel modelo = new DefaultTableModel();
-    public ConsultaPorRubro(EntidadesProductos entidadProducto) {
+    
+    public ConsultaPorRubro(EntidadesProductos entidadesProductos) {
         initComponents();
+        this.entidadesProductos = entidadesProductos;
         
         
         armarCabecera();
@@ -134,13 +136,14 @@ public class ConsultaPorRubro extends javax.swing.JInternalFrame {
         PanelLogo.setLayout(PanelLogoLayout);
         PanelLogoLayout.setHorizontalGroup(
             PanelLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelLogoLayout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelLogoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         PanelLogoLayout.setVerticalGroup(
             PanelLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
         );
 
         labelConsultaPorRubro.setBackground(java.awt.Color.black);
@@ -160,17 +163,14 @@ public class ConsultaPorRubro extends javax.swing.JInternalFrame {
             .addGroup(DesktopPanePrincipalRubroLayout.createSequentialGroup()
                 .addGroup(DesktopPanePrincipalRubroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(DesktopPanePrincipalRubroLayout.createSequentialGroup()
-                        .addGroup(DesktopPanePrincipalRubroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(DesktopPanePrincipalRubroLayout.createSequentialGroup()
-                                .addGap(187, 187, 187)
-                                .addComponent(jLabel2)
-                                .addGap(41, 41, 41)
-                                .addComponent(ComboBoxRubro, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(127, 127, 127))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DesktopPanePrincipalRubroLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(labelConsultaPorRubro)
-                                .addGap(95, 95, 95)))
+                        .addGap(187, 187, 187)
+                        .addComponent(jLabel2)
+                        .addGap(41, 41, 41)
+                        .addComponent(ComboBoxRubro, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(DesktopPanePrincipalRubroLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(labelConsultaPorRubro)
+                        .addGap(269, 269, 269)
                         .addComponent(PanelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(PanelTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -183,7 +183,7 @@ public class ConsultaPorRubro extends javax.swing.JInternalFrame {
                     .addGroup(DesktopPanePrincipalRubroLayout.createSequentialGroup()
                         .addGap(34, 34, 34)
                         .addComponent(labelConsultaPorRubro)))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(DesktopPanePrincipalRubroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(ComboBoxRubro))
@@ -211,8 +211,8 @@ public class ConsultaPorRubro extends javax.swing.JInternalFrame {
     private void ComboBoxRubroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxRubroActionPerformed
         String optionSelectedInBox = ComboBoxRubro.getSelectedItem().toString();  //Se obtiene el nombre de la opcion seleccionada en el combo box
         System.out.println(optionSelectedInBox);
-        TreeSet<Productos>  searchingItemSelectedInTreeSet = new TreeSet<Productos>(); // se crea un treeSet para almacenar los valores que va a devolver la entidadProducto
-        searchingItemSelectedInTreeSet = entidadProducto.getProductsByCategory(optionSelectedInBox);
+        TreeSet<Productos>  searchingItemSelectedInTreeSet = new TreeSet<>(); // se crea un treeSet para almacenar los valores que va a devolver la entidadProducto
+        searchingItemSelectedInTreeSet = entidadesProductos.getProductsByCategory(optionSelectedInBox);
         upgradeTable(searchingItemSelectedInTreeSet);   //Se actualiza la tabla, borrando los valores viejos y agregando los nuevos
         
     }//GEN-LAST:event_ComboBoxRubroActionPerformed

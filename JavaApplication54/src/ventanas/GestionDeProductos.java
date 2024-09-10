@@ -7,13 +7,14 @@ import javax.swing.table.DefaultTableModel;
 
 
 public class GestionDeProductos extends javax.swing.JInternalFrame {
-    EntidadesProductos entidadesProductos;// = new EntidadesProductos();
+    EntidadesProductos entidadesProductos;
     private final DefaultTableModel modelo = new DefaultTableModel();
     
   
-    public GestionDeProductos(EntidadesProductos entidadProducto) {
+    public GestionDeProductos(EntidadesProductos entidadesProductos) {
         initComponents();
         armarCabecera();
+        this.entidadesProductos = entidadesProductos;
         
         for(Productos productos: entidadesProductos.getProducts()){
                 cargarTabla(productos);
