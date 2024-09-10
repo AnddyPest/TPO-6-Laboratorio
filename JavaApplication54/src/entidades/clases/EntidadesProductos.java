@@ -24,6 +24,14 @@ public class EntidadesProductos {
     }
     
     //Buscador de productos por Rubro
+    public Productos getProductsByCategory(String type){
+        for(Productos product : products){
+            if(product.getType() == type){
+                return product;
+            }
+        }
+        return null;
+    }
     //Buscador de productos por Rango de precios
     //Buscador de productos por Nombre (Cargando por letra a letra)
     //Se puede crear un buscador general para los 3 tipos de busqueda
