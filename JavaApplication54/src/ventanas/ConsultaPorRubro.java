@@ -1,11 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
- */
 package ventanas;
 
+import clases.principal.Productos;
+import entidades.clases.EntidadesProductos;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.ArrayList;
+import java.util.TreeSet;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -13,11 +14,14 @@ import java.awt.Graphics;
  */
 public class ConsultaPorRubro extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form ConsultaPorRubro
-     */
-    public ConsultaPorRubro() {
+    EntidadesProductos entidadProducto;
+    DefaultTableModel modelo;
+    public ConsultaPorRubro(EntidadesProductos entidadProducto) {
         initComponents();
+        
+        modelo = new DefaultTableModel();
+        armarCabecera();
+        this.entidadProducto = entidadProducto;
     }
 
     /**
@@ -47,7 +51,7 @@ public class ConsultaPorRubro extends javax.swing.JInternalFrame {
             }
         };
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        TablaRubro = new javax.swing.JTable();
         ComboBoxRubro = new javax.swing.JComboBox<>();
         PanelLogo = new javax.swing.JPanel(){
             @Override
@@ -69,8 +73,8 @@ public class ConsultaPorRubro extends javax.swing.JInternalFrame {
         PanelTabla.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.lightGray, java.awt.Color.black, java.awt.Color.lightGray, java.awt.Color.lightGray));
         PanelTabla.setForeground(new java.awt.Color(60, 63, 65));
 
-        jTable1.setForeground(new java.awt.Color(51, 51, 51));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        TablaRubro.setForeground(new java.awt.Color(51, 51, 51));
+        TablaRubro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -96,8 +100,8 @@ public class ConsultaPorRubro extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.setGridColor(java.awt.Color.white);
-        jScrollPane1.setViewportView(jTable1);
+        TablaRubro.setGridColor(java.awt.Color.white);
+        jScrollPane1.setViewportView(TablaRubro);
 
         javax.swing.GroupLayout PanelTablaLayout = new javax.swing.GroupLayout(PanelTabla);
         PanelTabla.setLayout(PanelTablaLayout);
@@ -119,7 +123,12 @@ public class ConsultaPorRubro extends javax.swing.JInternalFrame {
         ComboBoxRubro.setBackground(java.awt.Color.darkGray);
         ComboBoxRubro.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         ComboBoxRubro.setForeground(java.awt.Color.black);
-        ComboBoxRubro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un rubro\t", "Comestible\t", "Perfumeria", "Limpieza", " " }));
+        ComboBoxRubro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un rubro", "Comestible", "Perfumeria", "Limpieza", "" }));
+        ComboBoxRubro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComboBoxRubroActionPerformed(evt);
+            }
+        });
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/iconoLupa.png"))); // NOI18N
 
@@ -202,16 +211,58 @@ public class ConsultaPorRubro extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void ComboBoxRubroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxRubroActionPerformed
+        String optionSelectedInBox = ComboBoxRubro.getSelectedItem().toString();  //Se obtiene el nombre de la opcion seleccionada en el combo box
+        System.out.println(optionSelectedInBox);
+        TreeSet<Productos>  searchingItemSelectedInTreeSet = new TreeSet<Productos>(); // se crea un treeSet para almacenar los valores que va a devolver la entidadProducto
+        searchingItemSelectedInTreeSet = entidadProducto.getProductsByCategory(optionSelectedInBox);
+        upgradeTable(searchingItemSelectedInTreeSet);   //Se actualiza la tabla, borrando los valores viejos y agregando los nuevos
+        
+    }//GEN-LAST:event_ComboBoxRubroActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> ComboBoxRubro;
     private javax.swing.JDesktopPane DesktopPanePrincipalRubro;
     private javax.swing.JPanel PanelLogo;
     private javax.swing.JPanel PanelTabla;
+    private javax.swing.JTable TablaRubro;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel labelConsultaPorRubro;
     // End of variables declaration//GEN-END:variables
+     public void armarCabecera(){
+        ArrayList<Object> columnas = new ArrayList<>();
+        columnas.add("Codigo");
+        columnas.add("Nombre");
+        columnas.add("Marca");
+        columnas.add("Rubro");
+        columnas.add("Precio");
+        columnas.add("Stock");
+        
+        for(Object obj:columnas){
+            modelo.addColumn(obj);
+        }
+        TablaRubro.setModel(modelo);
+    }
+    public void upgradeTable(TreeSet<Productos> products){
+        clearTable();
+        for(Productos product : products){
+            modelo.addRow(new Object[]{
+                product.getCode(),
+                product.getName(),
+                product.getBrand(),
+                product.getType(),
+                product.getPrice(),
+                product.getStock()                               
+            });
+        }
+    }
+    public void clearTable(){
+        int quantityRaws = modelo.getRowCount() -1;
+        for(int i = quantityRaws; i>= 0; i--){
+            modelo.removeRow(i);
+        }
+    }
 }

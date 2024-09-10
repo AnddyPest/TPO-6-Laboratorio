@@ -1,5 +1,6 @@
 package ventanas;
 
+import clases.principal.Productos;
 import entidades.clases.EntidadesProductos;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -61,12 +62,13 @@ public class Principal extends javax.swing.JFrame {
     Comando para borrar tabla:
     modelo.setRowCount(0);
     */
-
+    EntidadesProductos entidadProducto = new EntidadesProductos();
     public Principal() {
         initComponents();
         
         setExtendedState(Principal.MAXIMIZED_BOTH);
-        
+        Productos product1 = new Productos("Fideito", "Marolio", "Comestible", 1200, 1);
+        entidadProducto.addProducts(product1);
     }
 
     @SuppressWarnings("unchecked")
@@ -151,7 +153,7 @@ public class Principal extends javax.swing.JFrame {
     private void MenuConsultaPorRubroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuConsultaPorRubroActionPerformed
         Escritorio.removeAll();
         Escritorio.repaint();
-        ConsultaPorRubro vistaRubro = new ConsultaPorRubro();
+        ConsultaPorRubro vistaRubro = new ConsultaPorRubro(entidadProducto);
         vistaRubro.setVisible(true);
         Escritorio.add(vistaRubro);
         Escritorio.moveToFront(vistaRubro);
