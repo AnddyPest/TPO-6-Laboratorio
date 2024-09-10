@@ -21,7 +21,7 @@ public class EntidadesProductos {
     public void addProducts(Productos product){
         try{
             
-            products.add(product);
+            products.add(product);//Fallaba porque el compare to de la entidad productos, contiene un error al programarlo
             System.out.println("Añadido");
         } catch(Exception e){
             System.out.println("ERROR");
