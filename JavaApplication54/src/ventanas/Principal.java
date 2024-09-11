@@ -68,7 +68,9 @@ public class Principal extends javax.swing.JFrame {
         
         setExtendedState(Principal.MAXIMIZED_BOTH);
         Productos product1 = new Productos("Fideito", "Marolio", "Comestible", 1200, 1);
+        Productos product2 = new Productos("Fideos", "Carrefour", "Comestible", 1200, 1);
         entidadProducto.addProducts(product1);
+        entidadProducto.addProducts(product2);
     }
 
     @SuppressWarnings("unchecked")
