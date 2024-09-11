@@ -117,12 +117,12 @@ public class Productos implements Comparable<Productos>{
         int result = this.name.compareTo(o.getName());
         if(result == 0){
             result = this.brand.compareTo(o.getBrand());
-            if(result == 0){
-                result = this.type.compareTo(o.getType());
-                if(result == 0){
-                    result = Double.compare(this.price, o.getPrice());
-                    if(result == 0){
-                        result = Integer.compare(this.stock, o.getStock());
+        if(result == 0){
+            result = this.type.compareTo(o.getType());
+        if(result == 0){
+            result = Double.compare(this.price, o.getPrice());
+        if(result == 0){
+            result = Integer.compare(this.stock, o.getStock());
                     }
                 }
             }
