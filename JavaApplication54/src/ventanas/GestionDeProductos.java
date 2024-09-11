@@ -447,6 +447,17 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
                 cargarTabla(productos);
             }
         
+        txtCode.setEditable(false);
+        txtCode.setText("");
+        txtName.setEditable(false);
+        txtName.setText("");
+        txtBrand.setEditable(false);
+        txtBrand.setText("");
+        cmbRubroIn.setEnabled(true);
+        txtPrice.setEditable(true);
+        spnStock.setEnabled(true);
+            
+        
     }//GEN-LAST:event_btnSaveActionPerformed
 
 
