@@ -46,6 +46,8 @@ public class ConsultaPorNombre extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabview = new javax.swing.JTable();
 
+        setClosable(true);
+
         jLabel1.setFont(new java.awt.Font("Gill Sans MT", 0, 24)); // NOI18N
         jLabel1.setText("Busqueda por nombre");
 
