@@ -8,7 +8,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 public class Principal extends javax.swing.JFrame {
-    EntidadesProductos entidadesProductos = new EntidadesProductos();
+    private EntidadesProductos entidadesProductos;
+    Productos prod1 = new Productos(1, "Aceite", "Patito", "Comestible", 100.25, 12);
     
    
 
@@ -65,12 +66,14 @@ public class Principal extends javax.swing.JFrame {
     EntidadesProductos entidadProducto = new EntidadesProductos();
     public Principal() {
         initComponents();
-        
+        entidadesProductos = new EntidadesProductos();
+        entidadesProductos.addProducts(prod1);
         setExtendedState(Principal.MAXIMIZED_BOTH);
-        Productos product1 = new Productos("Fideito", "Marolio", "Comestible", 1200, 1);
-        Productos product2 = new Productos("Fideos", "Carrefour", "Comestible", 1200, 1);
-        entidadProducto.addProducts(product1);
-        entidadProducto.addProducts(product2);
+       
+
+        //Productos product1 = new Productos("Fideito", "Marolio", "Comestible", 1200, 1);
+      //entidadProducto.addProducts(product1);
+
     }
 
     @SuppressWarnings("unchecked")
@@ -155,7 +158,7 @@ public class Principal extends javax.swing.JFrame {
     private void MenuConsultaPorRubroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuConsultaPorRubroActionPerformed
         Escritorio.removeAll();
         Escritorio.repaint();
-        ConsultaPorRubro vistaRubro = new ConsultaPorRubro(entidadProducto);
+        ConsultaPorRubro vistaRubro = new ConsultaPorRubro(entidadesProductos);
         vistaRubro.setVisible(true);
         Escritorio.add(vistaRubro);
         Escritorio.moveToFront(vistaRubro);
@@ -165,7 +168,7 @@ public class Principal extends javax.swing.JFrame {
     private void MenuCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuCrearActionPerformed
         Escritorio.removeAll();
         Escritorio.repaint();
-        GestionDeProductos vistaGestionDeProductos = new GestionDeProductos();
+        GestionDeProductos vistaGestionDeProductos = new GestionDeProductos(entidadesProductos);
         vistaGestionDeProductos.setVisible(true);
         Escritorio.add(vistaGestionDeProductos);
         Escritorio.moveToFront(vistaGestionDeProductos);

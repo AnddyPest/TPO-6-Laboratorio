@@ -4,7 +4,6 @@ import clases.principal.Productos;
 import entidades.clases.EntidadesProductos;
 import java.awt.Color;
 import java.awt.Graphics;
-import java.util.ArrayList;
 import java.util.TreeSet;
 import javax.swing.table.DefaultTableModel;
 
@@ -14,14 +13,16 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ConsultaPorRubro extends javax.swing.JInternalFrame {
 
-    EntidadesProductos entidadProducto;
-    DefaultTableModel modelo;
-    public ConsultaPorRubro(EntidadesProductos entidadProducto) {
+    EntidadesProductos entidadesProductos;
+    DefaultTableModel modelo = new DefaultTableModel();
+    
+    public ConsultaPorRubro(EntidadesProductos entidadesProductos) {
         initComponents();
+        this.entidadesProductos = entidadesProductos;
         
-        modelo = new DefaultTableModel();
+        
         armarCabecera();
-        this.entidadProducto = entidadProducto;
+        
     }
 
     /**
@@ -51,7 +52,7 @@ public class ConsultaPorRubro extends javax.swing.JInternalFrame {
             }
         };
         jScrollPane1 = new javax.swing.JScrollPane();
-        TablaRubro = new javax.swing.JTable();
+        tablaRubro = new javax.swing.JTable();
         ComboBoxRubro = new javax.swing.JComboBox<>();
         PanelLogo = new javax.swing.JPanel(){
             @Override
@@ -73,8 +74,8 @@ public class ConsultaPorRubro extends javax.swing.JInternalFrame {
         PanelTabla.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.lightGray, java.awt.Color.black, java.awt.Color.lightGray, java.awt.Color.lightGray));
         PanelTabla.setForeground(new java.awt.Color(60, 63, 65));
 
-        TablaRubro.setForeground(new java.awt.Color(51, 51, 51));
-        TablaRubro.setModel(new javax.swing.table.DefaultTableModel(
+        tablaRubro.setForeground(new java.awt.Color(51, 51, 51));
+        tablaRubro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -100,8 +101,8 @@ public class ConsultaPorRubro extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        TablaRubro.setGridColor(java.awt.Color.white);
-        jScrollPane1.setViewportView(TablaRubro);
+        tablaRubro.setGridColor(java.awt.Color.white);
+        jScrollPane1.setViewportView(tablaRubro);
 
         javax.swing.GroupLayout PanelTablaLayout = new javax.swing.GroupLayout(PanelTabla);
         PanelTabla.setLayout(PanelTablaLayout);
@@ -122,8 +123,7 @@ public class ConsultaPorRubro extends javax.swing.JInternalFrame {
 
         ComboBoxRubro.setBackground(java.awt.Color.darkGray);
         ComboBoxRubro.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        ComboBoxRubro.setForeground(java.awt.Color.black);
-        ComboBoxRubro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un rubro", "Comestible", "Perfumeria", "Limpieza", "" }));
+        ComboBoxRubro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un Rubro", "Comestible", "Limpieza", "Perfumeria" }));
         ComboBoxRubro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ComboBoxRubroActionPerformed(evt);
@@ -136,18 +136,18 @@ public class ConsultaPorRubro extends javax.swing.JInternalFrame {
         PanelLogo.setLayout(PanelLogoLayout);
         PanelLogoLayout.setHorizontalGroup(
             PanelLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelLogoLayout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelLogoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         PanelLogoLayout.setVerticalGroup(
             PanelLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
         );
 
         labelConsultaPorRubro.setBackground(java.awt.Color.black);
         labelConsultaPorRubro.setFont(new java.awt.Font("DialogInput", 1, 36)); // NOI18N
-        labelConsultaPorRubro.setForeground(java.awt.Color.black);
         labelConsultaPorRubro.setText("Consulta por Rubro");
 
         DesktopPanePrincipalRubro.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -163,17 +163,14 @@ public class ConsultaPorRubro extends javax.swing.JInternalFrame {
             .addGroup(DesktopPanePrincipalRubroLayout.createSequentialGroup()
                 .addGroup(DesktopPanePrincipalRubroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(DesktopPanePrincipalRubroLayout.createSequentialGroup()
-                        .addGroup(DesktopPanePrincipalRubroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(DesktopPanePrincipalRubroLayout.createSequentialGroup()
-                                .addGap(187, 187, 187)
-                                .addComponent(jLabel2)
-                                .addGap(41, 41, 41)
-                                .addComponent(ComboBoxRubro, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(127, 127, 127))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DesktopPanePrincipalRubroLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(labelConsultaPorRubro)
-                                .addGap(95, 95, 95)))
+                        .addGap(187, 187, 187)
+                        .addComponent(jLabel2)
+                        .addGap(41, 41, 41)
+                        .addComponent(ComboBoxRubro, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(DesktopPanePrincipalRubroLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(labelConsultaPorRubro)
+                        .addGap(269, 269, 269)
                         .addComponent(PanelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(PanelTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -186,7 +183,7 @@ public class ConsultaPorRubro extends javax.swing.JInternalFrame {
                     .addGroup(DesktopPanePrincipalRubroLayout.createSequentialGroup()
                         .addGap(34, 34, 34)
                         .addComponent(labelConsultaPorRubro)))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(DesktopPanePrincipalRubroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(ComboBoxRubro))
@@ -214,8 +211,8 @@ public class ConsultaPorRubro extends javax.swing.JInternalFrame {
     private void ComboBoxRubroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxRubroActionPerformed
         String optionSelectedInBox = ComboBoxRubro.getSelectedItem().toString();  //Se obtiene el nombre de la opcion seleccionada en el combo box
         System.out.println(optionSelectedInBox);
-        TreeSet<Productos>  searchingItemSelectedInTreeSet = new TreeSet<Productos>(); // se crea un treeSet para almacenar los valores que va a devolver la entidadProducto
-        searchingItemSelectedInTreeSet = entidadProducto.getProductsByCategory(optionSelectedInBox);
+        TreeSet<Productos>  searchingItemSelectedInTreeSet = new TreeSet<>(); // se crea un treeSet para almacenar los valores que va a devolver la entidadProducto
+        searchingItemSelectedInTreeSet = entidadesProductos.getProductsByCategory(optionSelectedInBox);
         upgradeTable(searchingItemSelectedInTreeSet);   //Se actualiza la tabla, borrando los valores viejos y agregando los nuevos
         
     }//GEN-LAST:event_ComboBoxRubroActionPerformed
@@ -226,25 +223,21 @@ public class ConsultaPorRubro extends javax.swing.JInternalFrame {
     private javax.swing.JDesktopPane DesktopPanePrincipalRubro;
     private javax.swing.JPanel PanelLogo;
     private javax.swing.JPanel PanelTabla;
-    private javax.swing.JTable TablaRubro;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelConsultaPorRubro;
+    private javax.swing.JTable tablaRubro;
     // End of variables declaration//GEN-END:variables
-     public void armarCabecera(){
-        ArrayList<Object> columnas = new ArrayList<>();
-        columnas.add("Codigo");
-        columnas.add("Nombre");
-        columnas.add("Marca");
-        columnas.add("Rubro");
-        columnas.add("Precio");
-        columnas.add("Stock");
+     private void armarCabecera(){
+       modelo.addColumn("Codigo");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Marca");
+        modelo.addColumn("Rubro");
+        modelo.addColumn("Precio");
+        modelo.addColumn("Stock");
+        tablaRubro.setModel(modelo);
         
-        for(Object obj:columnas){
-            modelo.addColumn(obj);
-        }
-        TablaRubro.setModel(modelo);
     }
     public void upgradeTable(TreeSet<Productos> products){
         clearTable();
