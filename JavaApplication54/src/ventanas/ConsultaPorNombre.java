@@ -101,7 +101,7 @@ public class ConsultaPorNombre extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void TxtBrowKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtBrowKeyReleased
-
+    Erase();
         String prop = TxtBrow.getText();
      System.out.println(prop);
      TreeSet <Productos> propContain = new TreeSet<>();
@@ -140,6 +140,15 @@ public void update(TreeSet<Productos> products){
 }
 
         }
+
+public void Erase(){
+    
+    int filas = Tabview.getRowCount()-1;
+    for(int f=filas;f>=0;f--){
+        
+        modelo.removeRow(f);
+    }
+}
 
         
 }
