@@ -4,7 +4,9 @@
  */
 package ventanas;
 
+import clases.principal.Productos;
 import entidades.clases.EntidadesProductos;
+import java.util.TreeSet;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -99,9 +101,12 @@ public class ConsultaPorNombre extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void TxtBrowKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtBrowKeyReleased
-     
 
-  
+        String prop = TxtBrow.getText();
+     System.out.println(prop);
+     TreeSet <Productos> propContain = new TreeSet<>();
+  propContain = entidadesProductos.browByName(prop);
+  update(propContain);
     }//GEN-LAST:event_TxtBrowKeyReleased
 
 
@@ -122,5 +127,21 @@ public void añadirCabecera(){
     Tabview.setModel(modelo);
 }
 
+public void update(TreeSet<Productos> products){
+    for(Productos product : products){
+            modelo.addRow(new Object[]{
+                product.getCode(),
+                product.getName(),
+                product.getBrand(),
+                product.getType(),
+                product.getPrice(),
+                product.getStock()                               
+            });
+}
+
         }
+
+        
+}
+
 
