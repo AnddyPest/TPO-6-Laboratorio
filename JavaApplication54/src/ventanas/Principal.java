@@ -188,7 +188,7 @@ public class Principal extends javax.swing.JFrame {
        Escritorio.repaint();
         
         //Inicializador de la ventana "ConsultaPorNombre"
-        ConsultaPorNombre AskNameP = new ConsultaPorNombre();
+        ConsultaPorNombre AskNameP = new ConsultaPorNombre(entidadesProductos);
         AskNameP.setVisible(true);
         Escritorio.add(AskNameP);
         Escritorio.moveToFront(AskNameP);

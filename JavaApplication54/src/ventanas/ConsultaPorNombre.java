@@ -4,17 +4,30 @@
  */
 package ventanas;
 
+import entidades.clases.EntidadesProductos;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Max
  */
 public class ConsultaPorNombre extends javax.swing.JInternalFrame {
-
+ EntidadesProductos entidadesProductos;
+    DefaultTableModel modelo = new DefaultTableModel(){
+     
+     @Override
+     public boolean isCellEditable(int f, int c){
+         return false;
+     }
+ };
     /**
      * Creates new form ConsultaPorNombre
+     * @param entidadesProductos
      */
-    public ConsultaPorNombre() {
+    public ConsultaPorNombre(EntidadesProductos entidadesProductos) {
         initComponents();
+        this.entidadesProductos = entidadesProductos;
+        añadirCabecera();
     }
 
     /**
@@ -27,32 +40,32 @@ public class ConsultaPorNombre extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        TxtBrow = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        Tabview = new javax.swing.JTable();
 
         jLabel1.setFont(new java.awt.Font("Gill Sans MT", 0, 24)); // NOI18N
         jLabel1.setText("Busqueda por nombre");
 
-        jTextField1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+        TxtBrow.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        TxtBrow.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTextField1KeyReleased(evt);
+                TxtBrowKeyReleased(evt);
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        Tabview.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Codigo", "Nombre", "Marca", "Tipo", "Precio", "Stock"
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(Tabview);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -65,7 +78,7 @@ public class ConsultaPorNombre extends javax.swing.JInternalFrame {
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(108, 108, 108)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(TxtBrow, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 545, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -76,7 +89,7 @@ public class ConsultaPorNombre extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TxtBrow, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 13, Short.MAX_VALUE))
@@ -85,15 +98,29 @@ public class ConsultaPorNombre extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1KeyReleased
+    private void TxtBrowKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtBrowKeyReleased
+     
+
+  
+    }//GEN-LAST:event_TxtBrowKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable Tabview;
+    private javax.swing.JTextField TxtBrow;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
+
+public void añadirCabecera(){
+    modelo.addColumn("Codigo");
+    modelo.addColumn("Nombre");
+    modelo.addColumn("Marca");
+    modelo.addColumn("Tipo");
+    modelo.addColumn("Precio");
+    modelo.addColumn("Stock");
+    Tabview.setModel(modelo);
 }
+
+        }
+

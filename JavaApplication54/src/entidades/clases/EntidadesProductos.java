@@ -43,6 +43,21 @@ public class EntidadesProductos {
     
     //Buscador de productos por Rango de precios
     //Buscador de productos por Nombre (Cargando por letra a letra)
+   
+    //Copié el codigo de Maximo...
+    public TreeSet<Productos> browByName(String name){
+        TreeSet<Productos> nameLooked = new TreeSet<>();
+        
+        for (Productos prod: products){
+            
+            if(prod.getName().toLowerCase().startsWith(name)){
+                
+                nameLooked.add(prod);
+               
+            }
+        }
+ return nameLooked;
+    }
     //Se puede crear un buscador general para los 3 tipos de busqueda
     
     
