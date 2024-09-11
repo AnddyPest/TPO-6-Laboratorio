@@ -28,6 +28,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Consulta por Nombre"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuConsultaPorNombreActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="MenuConsultaPorPrecio">
               <Properties>

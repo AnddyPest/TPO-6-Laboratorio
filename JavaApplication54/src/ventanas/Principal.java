@@ -128,6 +128,11 @@ public class Principal extends javax.swing.JFrame {
         jMenu2.setText("Consultas");
 
         MenuConsultaPorNombre.setText("Consulta por Nombre");
+        MenuConsultaPorNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuConsultaPorNombreActionPerformed(evt);
+            }
+        });
         jMenu2.add(MenuConsultaPorNombre);
 
         MenuConsultaPorPrecio.setText("Consulta por Precio");
@@ -177,6 +182,19 @@ public class Principal extends javax.swing.JFrame {
         Escritorio.add(vistaGestionDeProductos);
         Escritorio.moveToFront(vistaGestionDeProductos);
     }//GEN-LAST:event_MenuCrearActionPerformed
+
+    private void MenuConsultaPorNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuConsultaPorNombreActionPerformed
+      Escritorio.removeAll();
+       Escritorio.repaint();
+        
+        //Inicializador de la ventana "ConsultaPorNombre"
+        ConsultaPorNombre AskNameP = new ConsultaPorNombre();
+        AskNameP.setVisible(true);
+        Escritorio.add(AskNameP);
+        Escritorio.moveToFront(AskNameP);
+        //-Marcos
+        ////////////////////////////////////////////////////////
+    }//GEN-LAST:event_MenuConsultaPorNombreActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
