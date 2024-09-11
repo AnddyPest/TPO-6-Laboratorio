@@ -36,13 +36,11 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tabProductos = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        txtCode = new javax.swing.JTextField();
         txtName = new javax.swing.JTextField();
         txtBrand = new javax.swing.JTextField();
         cmbRubroIn = new javax.swing.JComboBox<>();
@@ -101,9 +99,6 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel3.setText("Código:");
-
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel4.setText("Nombre:");
 
@@ -118,17 +113,6 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel8.setText("Stock:");
-
-        txtCode.setEditable(false);
-        txtCode.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        txtCode.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtCodeKeyReleased(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtCodeKeyTyped(evt);
-            }
-        });
 
         txtName.setEditable(false);
         txtName.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -181,7 +165,6 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
                     .addComponent(jLabel5)
                     .addComponent(jLabel6)
@@ -189,7 +172,6 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
                     .addComponent(jLabel8))
                 .addGap(39, 39, 39)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtCode)
                     .addComponent(txtName)
                     .addComponent(txtBrand)
                     .addComponent(cmbRubroIn, 0, 264, Short.MAX_VALUE)
@@ -201,10 +183,6 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -224,7 +202,7 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(spnStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -284,6 +262,11 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
         btnEdit.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnEdit.setText("Editar");
         btnEdit.setEnabled(false);
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -334,15 +317,13 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnClose)
-                        .addGap(46, 46, 46)))
+                        .addGap(62, 62, 62)
+                        .addComponent(btnClose))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(46, 46, 46)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnEdit, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -352,7 +333,7 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
                                 .addComponent(btnErase, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(btnActual, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 6, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -381,23 +362,13 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnCloseActionPerformed
 
     private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
-        txtCode.setEditable(true);
-        txtCode.requestFocus();
         txtName.setEditable(true);
+        txtName.requestFocus();
         txtBrand.setEditable(true);
         cmbRubroIn.setEnabled(true);
         txtPrice.setEditable(true);
         spnStock.setEnabled(true);
     }//GEN-LAST:event_btnNewActionPerformed
-
-    private void txtCodeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodeKeyTyped
-        int key = evt.getKeyChar();
-        boolean numero = key >= 48 && key <= 57;
-
-        if (!numero) {
-            evt.consume();
-        }
-    }//GEN-LAST:event_txtCodeKeyTyped
 
     private void txtPriceKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPriceKeyTyped
         int key = evt.getKeyChar();
@@ -407,10 +378,6 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
             evt.consume();
         }
     }//GEN-LAST:event_txtPriceKeyTyped
-
-    private void txtCodeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodeKeyReleased
-        habilitarSave();
-    }//GEN-LAST:event_txtCodeKeyReleased
 
     private void txtNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyReleased
         habilitarSave();
@@ -433,7 +400,7 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_spnStockStateChanged
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        int newCode = Integer.parseInt(txtCode.getText());
+        //int newCode = Integer.parseInt(txtCode.getText());
         String newName = txtName.getText();
         String newBrand = txtBrand.getText();
         String newType = (String) cmbRubroIn.getSelectedItem();
@@ -447,18 +414,24 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
                 cargarTabla(productos);
             }
         
-        txtCode.setEditable(false);
-        txtCode.setText("");
         txtName.setEditable(false);
         txtName.setText("");
         txtBrand.setEditable(false);
         txtBrand.setText("");
-        cmbRubroIn.setEnabled(true);
-        txtPrice.setEditable(true);
-        spnStock.setEnabled(true);
+        cmbRubroIn.setEnabled(false);
+        cmbRubroIn.setSelectedIndex(0);
+        txtPrice.setEditable(false);
+        txtPrice.setText("");
+        spnStock.setEnabled(false);
+        spnStock.setValue(-1);
+        btnSave.setEnabled(false);
             
         
     }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEditActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -472,7 +445,6 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> cmbSelectorCategorias;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -487,7 +459,6 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
     private javax.swing.JSpinner spnStock;
     private javax.swing.JTable tabProductos;
     private javax.swing.JTextField txtBrand;
-    private javax.swing.JTextField txtCode;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtPrice;
     // End of variables declaration//GEN-END:variables
@@ -517,7 +488,7 @@ private void cargarTabla(Productos producto) {
 private void habilitarSave() {
     int indexComboIn = cmbRubroIn.getSelectedIndex();
     int spnValue = (int)spnStock.getValue();
-    if  (!txtCode.getText().isEmpty() && !txtName.getText().isEmpty() &&
+    if  (!txtName.getText().isEmpty() &&
         !txtBrand.getText().isEmpty() && indexComboIn!=0 && !txtPrice.getText().isEmpty()
         && spnValue>=0){
         btnSave.setEnabled(true);
