@@ -6,6 +6,7 @@ public class Productos implements Comparable<Productos>{
     
     
     int code;
+    static int incremento = 0;
     String name;
     String brand;
     String type;
@@ -14,8 +15,8 @@ public class Productos implements Comparable<Productos>{
     
     
 
-    public Productos(int code, String name, String brand, String type, double price, int stock) {
-        this.code = code;
+    public Productos( String name, String brand, String type, double price, int stock) {
+        this.code = ++incremento;
         this.name = name;
         this.brand = brand;
         this.type = type;
@@ -93,9 +94,7 @@ public class Productos implements Comparable<Productos>{
             return false;
         }
         final Productos other = (Productos) obj;
-        if (this.code == other.code) {
-            return true;
-        }
+        
         if (Double.doubleToLongBits(this.price) != Double.doubleToLongBits(other.price)) {
             return false;
         }
@@ -115,7 +114,20 @@ public class Productos implements Comparable<Productos>{
  
     @Override
     public int compareTo(Productos o) {
-        return Integer.compare(code,o.getCode());
+        int result = this.name.compareTo(o.getName());
+        if(result == 0){
+            result = this.brand.compareTo(o.getBrand());
+            if(result == 0){
+                result = this.type.compareTo(o.getType());
+                if(result == 0){
+                    result = Double.compare(this.price, o.getPrice());
+                    if(result == 0){
+                        result = Integer.compare(this.stock, o.getStock());
+                    }
+                }
+            }
+        }
+        return result;
     }
 
     @Override

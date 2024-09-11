@@ -440,7 +440,7 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
         double newPrice = Double.parseDouble(txtPrice.getText());
         int newStock = (int) spnStock.getValue();
         
-        Productos newProduct = new Productos(newCode,newName, newBrand, newType, newPrice, newStock);
+        Productos newProduct = new Productos(newName, newBrand, newType, newPrice, newStock);
         entidadesProductos.addProducts(newProduct);
         modelo.setRowCount(0);
             for(Productos productos: entidadesProductos.getProducts()){

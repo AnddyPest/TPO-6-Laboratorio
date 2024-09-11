@@ -9,7 +9,9 @@ import javax.swing.JPanel;
 
 public class Principal extends javax.swing.JFrame {
     private EntidadesProductos entidadesProductos;
-    Productos prod1 = new Productos(1, "Aceite", "Patito", "Comestible", 100.25, 12);
+    Productos prod1 = new Productos("Aceite", "Patito", "Comestible", 100.25, 12);
+    Productos prod2 = new Productos("Aceite", "Marolio", "Comestible", 100.25, 12);
+    Productos prod3 = new Productos("Aceite", "Girasol", "Comestible", 100.25, 12);
     
    
 
@@ -68,6 +70,8 @@ public class Principal extends javax.swing.JFrame {
         initComponents();
         entidadesProductos = new EntidadesProductos();
         entidadesProductos.addProducts(prod1);
+        entidadesProductos.addProducts(prod2);
+        entidadesProductos.addProducts(prod3);
         setExtendedState(Principal.MAXIMIZED_BOTH);
        
 
