@@ -15,7 +15,7 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
         initComponents();
         armarCabecera();
         this.entidadesProductos = entidadesProductos;
-        tabProductos.setEnabled(false);
+        
 
         for (Productos productos : entidadesProductos.getProducts()) {
             cargarTabla(productos);
@@ -342,11 +342,11 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnCloseActionPerformed
 
     private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
-
-        if (btnNew.getText().equalsIgnoreCase("Cancelar")) {
+        
+         if (btnNew.getText().equalsIgnoreCase("Cancelar")) {
             fieldReset();
             btnNew.setText("Nuevo");
-        } else {
+        } else if(btnNew.getText().equalsIgnoreCase("Nuevo")){
             btnNew.setText("Cancelar");
             txtName.setEditable(true);
             txtName.requestFocus();
@@ -414,9 +414,12 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
             tabProductos.setEnabled(true);
 
         }
-        if (!tgbEdit.isSelected()) {
+        if (!tgbEdit.isSelected() && !btnNew.isEnabled()) {
             btnNew.setEnabled(true);
             tabProductos.setEnabled(true);
+            fieldReset();
+            btnActual.setEnabled(false);
+            btnErase.setEnabled(false);
         }
 
     }//GEN-LAST:event_tgbEditStateChanged
@@ -448,7 +451,7 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
                 cmbRubroIn.setEnabled(true);
                 txtPrice.setEditable(true);
                 spnStock.setEnabled(true);
-                tgbEdit.setEnabled(false);
+                
                 btnActual.setEnabled(true);
                 btnErase.setEnabled(true);
 
