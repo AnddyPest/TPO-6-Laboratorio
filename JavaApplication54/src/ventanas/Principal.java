@@ -65,7 +65,7 @@ public class Principal extends javax.swing.JFrame {
     Comando para borrar tabla:
     modelo.setRowCount(0);
     */
-    EntidadesProductos entidadProducto = new EntidadesProductos();
+    
     public Principal() {
         initComponents();
         entidadesProductos = new EntidadesProductos();

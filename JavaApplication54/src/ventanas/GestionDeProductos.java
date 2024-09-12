@@ -12,6 +12,7 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
     EntidadesProductos entidadesProductos;
     private final DefaultTableModel modelo = new DefaultTableModel();
     
+    
   
     public GestionDeProductos(EntidadesProductos entidadesProductos) {
         initComponents();
@@ -88,6 +89,7 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
+        tabProductos.setEnabled(false);
         tabProductos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tabProductosMouseClicked(evt);
@@ -345,6 +347,7 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnCloseActionPerformed
 
     private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
+        
         if(btnNew.getText().equalsIgnoreCase("Cancelar")){
             txtName.setEditable(false);
             txtName.setText("");
@@ -447,90 +450,111 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tgbEditStateChanged
 
     private void tabProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabProductosMouseClicked
-        int fila = (int) tabProductos.getSelectedRow();
-        if(fila !=-1) {   
-            int codProductoEdit = (int)(tabProductos.getValueAt(fila, 0));
-            final Productos productoEdit = entidadesProductos.browseByCode(codProductoEdit);
-            txtName.setText(productoEdit.getName());
-            txtBrand.setText(productoEdit.getBrand());
-            int indexBox = 0;
-            if(productoEdit.getType().equalsIgnoreCase("limpieza")){
-                indexBox = 2;
-            }else if(productoEdit.getType().equalsIgnoreCase("comestible")){
-                indexBox = 1;
-            }else{
-                indexBox = 3;
-            }
-            cmbRubroIn.setSelectedIndex(indexBox);
-            txtPrice.setText(String.valueOf(productoEdit.getPrice()));
-            spnStock.setValue(productoEdit.getStock());
-            btnSave.setEnabled(false);
-            txtName.setEditable(true);
-            txtBrand.setEditable(true);
-            cmbRubroIn.setEnabled(true);
-            txtPrice.setEditable(true);
-            spnStock.setEnabled(true);
-            tgbEdit.setEnabled(false);
-            
-            btnActual.setEnabled(true);
-            btnErase.setEnabled(true);
-            
-            btnActual.addActionListener(new ActionListener(){
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    productoEdit.setName(txtName.getText());
-                    productoEdit.setBrand(txtBrand.getText());
-                    productoEdit.setType((String) cmbRubroIn.getSelectedItem());
-                    productoEdit.setPrice(Double.parseDouble(txtPrice.getText()));
-                    productoEdit.setStock((int) spnStock.getValue());
-                    modelo.setRowCount(0);
-                        for(Productos productos: entidadesProductos.getProducts()){
-                            cargarTabla(productos);
-                        }
-                    txtName.setEditable(false);
-                    txtName.setText("");
-                    txtBrand.setEditable(false);
-                    txtBrand.setText("");
-                    cmbRubroIn.setEnabled(false);
-                    cmbRubroIn.setSelectedIndex(0);
-                    txtPrice.setEditable(false);
-                    txtPrice.setText("");
-                    spnStock.setEnabled(false);
-                    spnStock.setValue(-1);
-                    tgbEdit.setSelected(false);
-                    tabProductos.setEnabled(false);
-                    btnActual.setEnabled(false);
-                    btnErase.setEnabled(false);
-                }
-                
-            });
-            btnErase.addActionListener(new ActionListener(){
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    entidadesProductos.removeProducts(productoEdit);
-                    modelo.setRowCount(0);
-                        for(Productos productos: entidadesProductos.getProducts()){
-                            cargarTabla(productos);
-                        }
-                    txtName.setEditable(false);
-                    txtName.setText("");
-                    txtBrand.setEditable(false);
-                    txtBrand.setText("");
-                    cmbRubroIn.setEnabled(false);
-                    cmbRubroIn.setSelectedIndex(0);
-                    txtPrice.setEditable(false);
-                    txtPrice.setText("");
-                    spnStock.setEnabled(false);
-                    spnStock.setValue(-1);
-                    tgbEdit.setSelected(false);
-                    tabProductos.setEnabled(false);
-                    btnActual.setEnabled(false);
-                    btnErase.setEnabled(false);
-                } 
-            });
-        }
-    }//GEN-LAST:event_tabProductosMouseClicked
+        if(tgbEdit.isSelected()){
+            int fila = tabProductos.getSelectedRow();
+            if(fila!=-1) {
 
+                int codProductoEdit = (int)(tabProductos.getValueAt(fila, 0));
+                Productos productoEdit = entidadesProductos.browseByCode(codProductoEdit);
+
+                txtName.setText(productoEdit.getName());
+                txtBrand.setText(productoEdit.getBrand());
+                int indexBox = 0;
+                if(productoEdit.getType().equalsIgnoreCase("limpieza")){
+                    indexBox = 2;
+                }else if(productoEdit.getType().equalsIgnoreCase("comestible")){
+                    indexBox = 1;
+                }else{
+                    indexBox = 3;
+                }
+                cmbRubroIn.setSelectedIndex(indexBox);
+                txtPrice.setText(String.valueOf(productoEdit.getPrice()));
+                spnStock.setValue(productoEdit.getStock());
+                btnSave.setEnabled(false);
+                txtName.setEditable(true);
+                txtBrand.setEditable(true);
+                cmbRubroIn.setEnabled(true);
+                txtPrice.setEditable(true);
+                spnStock.setEnabled(true);
+                tgbEdit.setEnabled(false);
+
+
+                btnActual.setEnabled(true);
+                btnErase.setEnabled(true);
+
+                for (ActionListener evitarAcumulacion : btnActual.getActionListeners()) {
+                    btnActual.removeActionListener(evitarAcumulacion);
+                }
+                for (ActionListener evitarAcumulacion : btnErase.getActionListeners()) {
+                    btnErase.removeActionListener(evitarAcumulacion);
+                }
+                btnActual.addActionListener(new ActionListener(){
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+
+                        productoEdit.setName(txtName.getText());
+                        productoEdit.setBrand(txtBrand.getText());
+                        productoEdit.setType((String) cmbRubroIn.getSelectedItem());
+                        productoEdit.setPrice(Double.parseDouble(txtPrice.getText()));
+                        productoEdit.setStock((int) spnStock.getValue());
+                        modelo.setRowCount(0);
+                            for(Productos productos: entidadesProductos.getProducts()){
+                                cargarTabla(productos);
+                            }
+                        txtName.setEditable(false);
+                        txtName.setText("");
+                        txtBrand.setEditable(false);
+                        txtBrand.setText("");
+                        cmbRubroIn.setEnabled(false);
+                        cmbRubroIn.setSelectedIndex(0);
+                        txtPrice.setEditable(false);
+                        txtPrice.setText("");
+                        spnStock.setEnabled(false);
+                        spnStock.setValue(-1);
+                        btnSave.setEnabled(false);
+                        btnActual.setEnabled(false);
+                        btnErase.setEnabled(false);
+                        tgbEdit.setEnabled(true);
+                        tgbEdit.setSelected(false);
+                        btnNew.setEnabled(true);
+
+                    }
+
+                });
+                btnErase.addActionListener(new ActionListener(){
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+
+                        entidadesProductos.removeProducts(productoEdit);
+                        modelo.setRowCount(0);
+                            for(Productos productos: entidadesProductos.getProducts()){
+                                cargarTabla(productos);
+                            }
+                        txtName.setEditable(false);
+                        txtName.setText("");
+                        txtBrand.setEditable(false);
+                        txtBrand.setText("");
+                        cmbRubroIn.setEnabled(false);
+                        cmbRubroIn.setSelectedIndex(0);
+                        txtPrice.setEditable(false);
+                        txtPrice.setText("");
+                        spnStock.setEnabled(false);
+                        spnStock.setValue(-1);
+                        btnSave.setEnabled(false);
+                        btnActual.setEnabled(false);
+                        btnErase.setEnabled(false);
+                        tgbEdit.setEnabled(true);
+                        tgbEdit.setSelected(false);
+                        btnNew.setEnabled(true);
+
+                    } 
+                });
+
+            }
+        }
+        
+    }//GEN-LAST:event_tabProductosMouseClicked
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActual;
