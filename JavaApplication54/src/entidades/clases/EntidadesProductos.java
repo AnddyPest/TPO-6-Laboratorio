@@ -21,8 +21,11 @@ public class EntidadesProductos {
     public void addProducts(Productos product){
         products.add(product);
         
-        
     }
+    public void removeProducts(Productos product){
+        products.remove(product);
+    }
+    
     public void setProducts(TreeSet<Productos> products) {
         this.products = products;
     }
@@ -56,8 +59,18 @@ public class EntidadesProductos {
                
             }
         }
- return nameLooked;
+        return nameLooked;
     }
+    
+    public Productos browseByCode(int code) {
+        for(Productos itProd: products){
+            if(itProd.getCode() == code){
+                 return itProd;  
+            }
+        }
+        return null;
+    }
+    
     //Se puede crear un buscador general para los 3 tipos de busqueda
     
     
