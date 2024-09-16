@@ -6,6 +6,7 @@ package ventanas;
 
 import clases.principal.Productos;
 import entidades.clases.EntidadesProductos;
+import java.util.TreeSet;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -59,9 +60,24 @@ public class ConsultaPorPrecio extends javax.swing.JInternalFrame {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Precio desde:");
 
+        txtPriceLow.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPriceLowKeyTyped(evt);
+            }
+        });
+
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("hasta");
+
+        txtPriceHigh.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtPriceHighKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPriceHighKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -167,6 +183,34 @@ public class ConsultaPorPrecio extends javax.swing.JInternalFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void txtPriceLowKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPriceLowKeyTyped
+        int key = evt.getKeyChar();
+        boolean numero = key >= 48 && key <= 57 || key == 46;
+
+        if (!numero) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtPriceLowKeyTyped
+
+    private void txtPriceHighKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPriceHighKeyTyped
+        int key = evt.getKeyChar();
+        boolean numero = key >= 48 && key <= 57 || key == 46;
+
+        if (!numero) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtPriceHighKeyTyped
+
+    private void txtPriceHighKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPriceHighKeyReleased
+        if(!txtPriceLow.getText().isEmpty() && Double.parseDouble(txtPriceLow.getText()) <= Double.parseDouble(txtPriceHigh.getText())){
+            
+            TreeSet<Productos> prodEntrePrecios = new TreeSet();
+            prodEntrePrecios = entidadesProductos.buscaPrecio(Double.parseDouble(txtPriceLow.getText()), Double.parseDouble(txtPriceHigh.getText()));
+            actualizarTabla(prodEntrePrecios);
+        }
+        
+    }//GEN-LAST:event_txtPriceHighKeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -201,5 +245,19 @@ public class ConsultaPorPrecio extends javax.swing.JInternalFrame {
             producto.getStock()
 
         });
+    }
+    
+    private void actualizarTabla(TreeSet<Productos> products){
+        modelo.setRowCount(0);
+        for(Productos product : products){
+            modelo.addRow(new Object[]{
+                product.getCode(),
+                product.getName(),
+                product.getBrand(),
+                product.getType(),
+                product.getPrice(),
+                product.getStock()                               
+            });
+        }
     }
 }

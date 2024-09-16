@@ -71,10 +71,10 @@ public class EntidadesProductos {
         return null;
     }
     
-    public TreeSet<Productos> buscaPrecio (int precioLow, int precioHigh ) {
+    public TreeSet<Productos> buscaPrecio (double precioLow, double precioHigh ) {
         TreeSet<Productos> prodPorPrecio = new TreeSet();
         for(Productos itProd : products){
-            if(itProd.getPrice() > precioLow && itProd.getPrice() < precioHigh){
+            if(itProd.getPrice() >= precioLow && itProd.getPrice() <= precioHigh){
                 prodPorPrecio.add(itProd);
             }
         }
