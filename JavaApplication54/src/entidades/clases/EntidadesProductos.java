@@ -71,6 +71,16 @@ public class EntidadesProductos {
         return null;
     }
     
+    public TreeSet<Productos> buscaPrecio (int precioLow, int precioHigh ) {
+        TreeSet<Productos> prodPorPrecio = new TreeSet();
+        for(Productos itProd : products){
+            if(itProd.getPrice() > precioLow && itProd.getPrice() < precioHigh){
+                prodPorPrecio.add(itProd);
+            }
+        }
+        return prodPorPrecio;
+    }
+    
     //Se puede crear un buscador general para los 3 tipos de busqueda
     
     

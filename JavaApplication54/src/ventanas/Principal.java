@@ -136,6 +136,11 @@ public class Principal extends javax.swing.JFrame {
         jMenu2.add(MenuConsultaPorNombre);
 
         MenuConsultaPorPrecio.setText("Consulta por Precio");
+        MenuConsultaPorPrecio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuConsultaPorPrecioActionPerformed(evt);
+            }
+        });
         jMenu2.add(MenuConsultaPorPrecio);
 
         MenuConsultaPorRubro.setText("Consulta por Rubro");
@@ -158,7 +163,7 @@ public class Principal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Escritorio)
+            .addComponent(Escritorio, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         pack();
@@ -195,6 +200,15 @@ public class Principal extends javax.swing.JFrame {
         //-Marcos
         ////////////////////////////////////////////////////////
     }//GEN-LAST:event_MenuConsultaPorNombreActionPerformed
+
+    private void MenuConsultaPorPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuConsultaPorPrecioActionPerformed
+        Escritorio.removeAll();
+        Escritorio.repaint();
+        ConsultaPorPrecio vistaPrecios = new ConsultaPorPrecio(entidadesProductos);
+        vistaPrecios.setVisible(true);
+        Escritorio.add(vistaPrecios);
+        Escritorio.moveToFront(vistaPrecios);
+    }//GEN-LAST:event_MenuConsultaPorPrecioActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
